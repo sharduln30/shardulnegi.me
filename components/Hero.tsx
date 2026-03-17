@@ -9,6 +9,7 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center px-6 grid-bg overflow-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-f1-black via-transparent to-f1-black pointer-events-none" />
+      <div className="hero-glow" />
 
       <div className="relative z-10 flex flex-col items-center text-center">
         <RacingLights />
@@ -19,18 +20,13 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="font-[family-name:var(--font-orbitron)] text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-none mb-4">
-          <span className="text-f1-white">SHARDUL</span>
-          <br />
+        <h1 className="font-[family-name:var(--font-orbitron)] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-4">
+          <span className="text-f1-white">SHARDUL</span>{" "}
           <span className="text-f1-red">NEGI</span>
         </h1>
 
-        <p className="text-f1-muted text-sm md:text-base max-w-lg mb-2 font-[family-name:var(--font-mono)]">
+        <p className="text-f1-muted text-sm md:text-base max-w-lg mb-10 font-[family-name:var(--font-mono)]">
           Building high-scale distributed systems at PayU
-        </p>
-        <p className="text-f1-muted/60 text-xs md:text-sm max-w-md mb-10 font-[family-name:var(--font-mono)]">
-          GPay &middot; PhonePe &middot; Paytm &middot; Meesho &middot; Swiggy
-          &middot; BharatPe
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">

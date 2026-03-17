@@ -63,7 +63,7 @@ export default function Contact() {
     <section id="contact" className="py-24 px-6">
       <div ref={ref} className="max-w-4xl mx-auto text-center">
         <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
+          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
             10 — Team Radio
           </span>
           <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-6">

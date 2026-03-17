@@ -4,7 +4,7 @@
 % License : MIT
 %------------------------
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -18,25 +18,23 @@
 \usepackage{multirow}
 
 \pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
+\fancyhf{}
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.375in}
-\addtolength{\evensidemargin}{-0.375in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+% Adjust margins — tight for one page
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.35in}
+\addtolength{\topmargin}{-0.65in}
+\addtolength{\textheight}{1.35in}
 
 \urlstyle{same}
-
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
@@ -67,12 +65,12 @@
 
 \newcommand{\resumeProjectItem}[4]{%
   \noindent
-  \textbf{#1 \href{#2}{[\underline{Link}]}} \hfill {#3} \\ % Project title + Link (left), Technologies (right)
-  \vspace{-5pt} % Adjust the vertical spacing
-  \begin{itemize} % Start itemized list for the description
-    \item #4 % Description of the project
+  \textbf{#1 \href{#2}{[\underline{Link}]}} \hfill {#3} \\
+  \vspace{-5pt}
+  \begin{itemize}
+    \item #4
   \end{itemize}
-  \vspace{-5pt} % Adjust overall spacing after the description
+  \vspace{-5pt}
 }
 
 \renewcommand{\labelitemii}{$\circ$}
@@ -81,9 +79,8 @@
 \newcommand{\resumeSubHeadingListStartBullets}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-% Create resume header command. Parameters: name, email, phone, GitHub, location
 \newcommand{\resumeHeader}[5]{
     \begin{center}
         {\Huge \textbf{#1}} \\[0.5em]
@@ -102,16 +99,13 @@
 \newcolumntype{R}{>{\hb@xt@\z@\bgroup\hss}r<{\egroup}}
 \makeatother
 
-%-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \begin{document}
 
 %----------HEADING-----------------
 \begin{center}
     \resumeHeader{Shardul Negi}{shardul.exe@gmail.com}{+91-9660442629}{sharduln30}{shardulnegi}
 \end{center}
+\vspace{-15pt}
 
 %-----------EDUCATION-----------------
 \section{Education}
@@ -119,26 +113,20 @@
     \resumeSubheading
       {Manipal University}{Jaipur, India}
       {B.Tech in Computer Sc. \& Communication Engineering, CGPA: 8.75/10.0}{Aug 2016 -- Jun 2020}
-      \resumeItemListStart
-        \resumeItem{Coursework}
-          {Data Structures \& Algorithms, Object-Oriented Programming, Operating Systems, Database Systems, Web Development}
-      \resumeItemListEnd
   \resumeSubHeadingListEnd
-
 
 %-----------EXPERIENCE-----------------
 \section{Work Experience}
   \resumeSubHeadingListStart
   \resumeSubheading
       {PayU}{Gurugram, India}
-      {Senior Software Engineer \textbar{} Lending for \textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe}}{May 2022 -- Present}
-
+      {Senior Software Engineer}{May 2022 -- Present}
       \resumeItemListStart
-        \resumeItemNH{\textbf{Centralized Notification Service (CNS):} Architected unified notification platform replacing fragmented SMS \& Email infra, processing \textbf{10K--50K msgs/day}. Built retry engine with \textbf{DLQ}, reducing failures by \textbf{$\sim$40\%} and achieving \textbf{98\%+ delivery rate}. \textbf{Kafka} priority queues cut \textbf{OTP latency by $\sim$35\%}. Template engine reduced partner onboarding from \textbf{3--5 days to $<$2 hours}.}
-        \resumeItemNH{\textbf{Partner Integration Platform:} Collaborated with \textbf{6 partner} engineering teams (\textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe}). Designed APIs for loan origination, disbursement \& mandates with \textbf{99.5\%+ uptime} and \textbf{sub-200ms p95} latency.}
+        \resumeItemNH{\textbf{Centralized Notification Service (CNS):} Architected unified notification platform replacing fragmented SMS \& Email infra, processing \textbf{10K--50K msgs/day}. Built retry engine with \textbf{DLQ}, reducing failures by \textbf{$\sim$40\%}, achieving \textbf{98\%+ delivery rate}. \textbf{Kafka} priority queues cut \textbf{OTP latency by $\sim$35\%}. Template engine reduced partner onboarding from \textbf{3--5 days to $<$2 hours}.}
+        \resumeItemNH{\textbf{Partner Integration Platform:} Collaborated with engineering teams at \textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe}. Designed APIs for loan origination, disbursement \& mandates with \textbf{99.5\%+ uptime} and \textbf{sub-200ms p95} latency.}
         \resumeItemNH{\textbf{eNACH Mandate Integration:} Designed scalable eNACH mandate service achieving \textbf{$\sim$90\% success rate}. Integrated \textbf{Redis} caching \& \textbf{async processing}, boosting throughput by \textbf{3x}.}
         \resumeItemNH{\textbf{Loan Document Generation:} Template-based system using \textbf{Java Spring Boot} and \textbf{Thymeleaf} -- \textbf{60\%} less dev effort, \textbf{30\%} faster processing, near-zero document errors.}
-        \resumeItemNH{\textbf{V-KYC Integration:} Delivered compliant \textbf{Video KYC} solution with intelligent method selection based on KYC type, improving compliance turnaround.}
+        \resumeItemNH{\textbf{V-KYC Integration:} Delivered compliant \textbf{Video KYC} solution with intelligent method selection, improving compliance turnaround.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -149,24 +137,20 @@
         \resumeItemNH{Led \textbf{Oracle-to-Azure SQL data migration} using SSMA across \textbf{50+ tables} with \textbf{zero data loss}.}
         \resumeItemNH{Drove JUnit test coverage from \textbf{$\sim$30\% to 80\%+}, reducing production defects.}
       \resumeItemListEnd
-
   \resumeSubHeadingListEnd
 
 %-----------PROJECTS-----------------
 \section{Projects}
-
     \resumeProjectItem{Online Doubt Support Portal}{https://online-doubt-support-portal.onrender.com}{HTML \textbar \space CSS \textbar \space JavaScript \textbar \space Bootstrap}{A portal integrated with whiteboard, code editor and chat box.
-    \item Implemented chat box using Socket.IO, an event-based bidirectional communication layer for real-time web applications.}
+    \item Implemented chat using Socket.IO for bidirectional real-time communication.}
 
-    \resumeProjectItem{MS-Excel Clone}{https://github.com/sharduln30/Excel-Clone}{Web Application \textbar \space Data Structures}{A web application for basic tasks like saving, loading, and opening files, with text and cell editing features (font-size, font-style, text-align).
-    \item Used graph theory to detect circular references while implementing the formula tab feature.
-    \item Applied inbuilt stack functionality for Infix Evaluation in the formula tab. Implemented Topological Sort to resolve cell dependencies.}
-
+    \resumeProjectItem{MS-Excel Clone}{https://github.com/sharduln30/Excel-Clone}{Web Application \textbar \space Data Structures}{A web app for saving, loading files with text and cell editing features.
+    \item Used graph theory for circular reference detection, stack-based Infix Evaluation, and Topological Sort for cell dependencies.}
 
 %-----------LEADERSHIP & ACHIEVEMENTS-----------------
 \section{Leadership \& Achievements}
   \resumeSubHeadingListStartBullets
-    \resumeItemNH{\textbf{Architected PayU's CNS} from design doc to production -- backbone of all lending communication across \textbf{6 major partners} (GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe).}
+    \resumeItemNH{\textbf{Architected PayU's CNS} from design doc to production -- backbone of all lending communication across partners like GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe.}
     \resumeItemNH{Qualified for the \textbf{final round of INNOVRITI 4.0}, annual B-PLAN competition at Manipal University Jaipur (\textbf{top 5 of 100+ teams}).}
     \resumeItemNH{\textbf{Led cross-cultural team} as team head during Business Engineering program at \textbf{Heig-vd, Switzerland}.}
   \resumeSubHeadingListEnd
@@ -174,14 +158,9 @@
 %--------SKILLS------------
 \section{Skills}
   \resumeSubHeadingListStart
-    \resumeSubItem{Languages}
-      {Java, SQL, HTML/CSS}
-    \resumeSubItem{Frameworks \& Tools}
-      {Spring Boot, Thymeleaf, Git, Redis, Kafka, Docker, Linux, AWS (S3, EC2, SES, SNS, SQS), CI/CD, JIRA}
-    \resumeSubItem{Architecture}
-      {Microservices, Event-Driven Architecture, REST APIs, System Design, Distributed Systems}
+    \resumeSubItem{Languages}{Java, SQL, HTML/CSS}
+    \resumeSubItem{Tools \& Frameworks}{Spring Boot, Thymeleaf, Git, Redis, Kafka, Docker, Linux, AWS (S3, EC2, SES, SNS, SQS), CI/CD}
+    \resumeSubItem{Architecture}{Microservices, Event-Driven, REST APIs, System Design, Distributed Systems}
   \resumeSubHeadingListEnd
 
-
-%-------------------------------------------
 \end{document}

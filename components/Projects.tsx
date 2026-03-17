@@ -16,7 +16,7 @@ const PROJECTS = [
     title: "Partner Integration Platform",
     circuit: "PayU — API Design",
     description:
-      "Partner-facing APIs handling loan origination, disbursement, and mandates across GPay, PhonePe, Paytm, Meesho, Swiggy & BharatPe.",
+      "Partner-facing APIs handling loan origination, disbursement, and mandates across 6 major lending partners.",
     metrics: ["6 partners", "99.5% uptime", "<200ms p95"],
     tags: ["Spring Boot", "REST APIs", "Redis"],
     featured: true,
@@ -48,7 +48,7 @@ export default function Projects() {
     <section id="projects" className="py-24 px-6 bg-f1-dark">
       <div ref={ref} className="max-w-6xl mx-auto">
         <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
+          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
             05 — Grands Prix
           </span>
           <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-12">

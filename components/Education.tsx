@@ -9,7 +9,7 @@ export default function Education() {
     <section id="education" className="py-24 px-6 bg-f1-dark">
       <div ref={ref} className="max-w-5xl mx-auto">
         <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
+          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
             07 — Race Academy
           </span>
           <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-12">

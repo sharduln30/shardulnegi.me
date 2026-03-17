@@ -16,7 +16,7 @@ export default function About() {
     <section id="about" className="py-24 px-6">
       <div ref={ref} className="max-w-6xl mx-auto">
         <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
+          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
             02 — Driver Profile
           </span>
           <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-12">
@@ -51,10 +51,9 @@ export default function About() {
                 Senior Software Engineer with 5+ years of experience designing
                 and building high-scale distributed backend systems in fintech.
                 At PayU, I architect services processing tens of thousands of
-                daily transactions across lending integrations with GPay,
-                PhonePe, Paytm, Meesho, Swiggy, and BharatPe. Deep expertise in
-                Java, Spring Boot, AWS, Kafka, microservices, and event-driven
-                architectures.
+                daily transactions across lending integrations with major
+                partners. Deep expertise in Java, Spring Boot, AWS, Kafka,
+                microservices, and event-driven architectures.
               </p>
             </div>
           </div>
