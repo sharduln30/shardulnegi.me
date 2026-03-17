@@ -1,0 +1,149 @@
+%-------------------------
+% Resume in LaTeX — Shardul Negi
+% Based on original template style (single-column, compact)
+%-------------------------
+
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{\item\small{#1}\vspace{-2pt}}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Shardul Negi} \\ \vspace{2pt}
+    \small
+    \href{mailto:shardul.exe@gmail.com}{shardul.exe@gmail.com} $|$
+    +91-9660442629 $|$
+    \href{https://github.com/sharduln30}{github/sharduln30} $|$
+    \href{https://linkedin.com/in/shardulnegi}{linkedin/shardulnegi}
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+\small{Senior Software Engineer with \textbf{5+ years} building \textbf{high-scale distributed systems} in fintech. At \textbf{PayU}, architected services processing tens of thousands of daily transactions across lending integrations with \textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, and BharatPe}. Expertise in \textbf{Java, Spring Boot, AWS, Kafka}, microservices, and event-driven architectures.}
+
+%-----------WORK EXPERIENCE-----------
+\section{Work Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {\textbf{PayU}}{Gurugram, India}
+      {Senior Software Engineer $|$ \small{Lending platform for \textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe}}}{May 2022 -- Present}
+      \resumeItemListStart
+        \resumeItem{\textbf{Centralized Notification Service (CNS):} Architected unified notification platform replacing fragmented SMS \& Email infra, processing \textbf{10K--50K msgs/day}. Built retry engine with DLQ reducing failures by \textbf{\raise.17ex\hbox{$\scriptstyle\sim$}40\%}, achieving \textbf{98\%+ delivery rate}. Kafka priority queues cut \textbf{OTP latency by \raise.17ex\hbox{$\scriptstyle\sim$}35\%}. Template engine reduced partner onboarding from \textbf{3--5 days to <2 hours}.}
+        \resumeItem{\textbf{Partner Integration Platform:} Collaborated with \textbf{6 partner} engineering teams. Designed APIs for loan origination, disbursement \& mandates with \textbf{99.5\%+ uptime} and \textbf{sub-200ms p95} latency.}
+        \resumeItem{\textbf{eNACH Mandate Integration:} Scalable mandate service achieving \textbf{\raise.17ex\hbox{$\scriptstyle\sim$}90\% success rate}. Redis caching \& async processing boosted throughput by \textbf{3x}.}
+        \resumeItem{\textbf{Loan Document Generation:} Template-based system with Spring Boot \& Thymeleaf -- \textbf{60\%} less dev effort, \textbf{30\%} faster processing.}
+        \resumeItem{\textbf{V-KYC Integration:} Compliant Video KYC with intelligent method selection, improving compliance turnaround.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {\textbf{Tata Consultancy Services}}{Noida, India}
+      {Software Engineer}{Oct 2020 -- May 2022}
+      \resumeItemListStart
+        \resumeItem{Built \textbf{microservice-based billing app} with Spring Boot \& MS SQL for accounting workflows.}
+        \resumeItem{Led \textbf{Oracle-to-Azure SQL migration} across \textbf{50+ tables} with \textbf{zero data loss}.}
+        \resumeItem{Drove JUnit coverage from \textbf{\raise.17ex\hbox{$\scriptstyle\sim$}30\% to 80\%+}, reducing production defects.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Online Doubt Support Portal} $|$ \emph{HTML, CSS, JavaScript, Bootstrap, Socket.IO} \href{https://online-doubt-support-portal.onrender.com}{\textbf{[Link]}}}{}
+          \resumeItemListStart
+            \resumeItem{Real-time collaboration platform with whiteboard, code editor, and \textbf{bidirectional messaging} via Socket.IO.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{MS-Excel Clone} $|$ \emph{JavaScript, Graph Theory, Data Structures} \href{https://github.com/sharduln30/Excel-Clone}{\textbf{[Link]}}}{}
+          \resumeItemListStart
+            \resumeItem{Browser-based spreadsheet with \textbf{circular reference detection} (graph theory), \textbf{topological sort} for dependencies, \textbf{stack-based infix parsing} for formulas.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{Manipal University Jaipur}}{India}
+      {B.Tech, Computer Science \& Communication Engineering $|$ \textbf{CGPA: 8.75/10.0}}{Aug 2016 -- Jun 2020}
+      \resumeItemListStart
+        \resumeItem{Coursework: Data Structures \& Algorithms, OOP, Operating Systems, DBMS, Computer Networks, Distributed Systems}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages:}{ Java, SQL, HTML, CSS} \\
+     \textbf{Frameworks:}{ Spring Boot, Thymeleaf} \hfill
+     \textbf{Databases:}{ MySQL, MS SQL, Oracle, Azure SQL, Redis} \\
+     \textbf{Cloud \& Infra:}{ AWS (S3, EC2, SES, SNS, SQS), Docker, Linux, CI/CD} \hfill
+     \textbf{Messaging:}{ Kafka, SNS, SQS} \\
+     \textbf{Architecture:}{ Microservices, Event-Driven, REST APIs, System Design, Distributed Systems}
+    }}
+ \end{itemize}
+
+%-----------LEADERSHIP & ACHIEVEMENTS-----------
+\section{Leadership \& Achievements}
+\resumeItemListStart
+    \resumeItem{\textbf{Architected PayU's CNS} from design doc to production -- backbone of lending communication across \textbf{6 partners}.}
+    \resumeItem{\textbf{Finalist, INNOVRITI 4.0} -- B-PLAN competition at Manipal University Jaipur (\textbf{top 5 of 100+ teams}).}
+    \resumeItem{\textbf{Led cross-cultural team} at Heig-vd, \textbf{Switzerland} during Business Engineering program.}
+\resumeItemListEnd
+
+\end{document}

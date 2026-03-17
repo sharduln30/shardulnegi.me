@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+@theme {
+  --color-f1-black: #0a0a0a;
+  --color-f1-dark: #111111;
+  --color-f1-gray: #1a1a2e;
+  --color-f1-red: #E10600;
+  --color-f1-red-dark: #b80500;
+  --color-f1-green: #00FF87;
+  --color-f1-white: #f0f0f0;
+  --color-f1-muted: #888888;
+  --color-f1-card: #161616;
+  --color-f1-border: #2a2a2a;
+
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --ease-apple: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-f1-black);
+  color: var(--color-f1-white);
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-f1-red);
+  color: white;
+}
+
+/* ============ FADE-UP ANIMATION SYSTEM ============ */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s var(--ease-apple),
+    transform 0.8s var(--ease-apple);
+  transition-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-apple);
+  transition-delay: var(--delay, 0s);
+  will-change: opacity;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.6s var(--ease-apple),
+    transform 0.6s var(--ease-apple);
+  transition-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============ RACING LIGHTS ============ */
+
+@keyframes lightOn {
+  0% { opacity: 0.15; box-shadow: none; }
+  100% { opacity: 1; box-shadow: 0 0 30px 10px var(--color-f1-red); }
+}
+
+@keyframes lightsOut {
+  0% { opacity: 1; box-shadow: 0 0 30px 10px var(--color-f1-red); }
+  100% { opacity: 0.05; box-shadow: none; }
+}
+
+@keyframes goGlow {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.racing-light {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-f1-red);
+  opacity: 0.15;
+}
+
+.racing-light.on {
+  animation: lightOn 0.3s var(--ease-apple) forwards;
+  animation-delay: var(--light-delay, 0s);
+}
+
+.racing-light.out {
+  animation: lightsOut 0.2s var(--ease-apple) forwards;
+  animation-delay: var(--out-delay, 0s);
+}
+
+/* ============ SKILL BARS ============ */
+
+.skill-bar-fill {
+  width: 0%;
+  transition: width 1.2s var(--ease-apple);
+  transition-delay: var(--delay, 0s);
+}
+
+.skill-bar-fill.visible {
+  width: var(--skill-level);
+}
+
+/* ============ TIMELINE DRAW ============ */
+
+.timeline-line {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.5s var(--ease-apple);
+}
+
+.timeline-line.visible {
+  transform: scaleY(1);
+}
+
+/* ============ CHECKERED DIVIDER ============ */
+
+.checkered-divider {
+  height: 8px;
+  background-image:
+    linear-gradient(45deg, var(--color-f1-border) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-f1-border) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-f1-border) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-f1-border) 75%);
+  background-size: 16px 8px;
+  background-position: 0 0, 0 0, 8px 0, 8px 0;
+  opacity: 0.4;
+}
+
+/* ============ GRID BACKGROUND ============ */
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ============ CARBON FIBER TEXTURE ============ */
+
+.carbon-fiber {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+/* ============ HOVER INTERACTIONS ============ */
+
+.card-hover {
+  transition:
+    transform 0.3s var(--ease-apple),
+    box-shadow 0.3s var(--ease-apple);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.btn-press {
+  transition:
+    background-color 0.2s var(--ease-apple),
+    transform 0.1s var(--ease-apple);
+}
+
+.btn-press:hover {
+  filter: brightness(1.1);
+}
+
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* ============ LINK UNDERLINE ============ */
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-f1-red);
+  transition: width 0.3s var(--ease-apple);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ============ REDUCED MOTION ============ */
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .fade-in,
+  .scale-in,
+  .skill-bar-fill,
+  .timeline-line,
+  .card-hover,
+  .btn-press,
+  .racing-light {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .skill-bar-fill {
+    width: var(--skill-level) !important;
+  }
+}
+
+/* ============ SCROLLBAR ============ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-f1-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-f1-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-f1-red);
+}
