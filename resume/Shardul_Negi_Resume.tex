@@ -1,149 +1,187 @@
 %-------------------------
-% Resume in LaTeX — Shardul Negi
-% Based on original template style (single-column, compact)
-%-------------------------
+% Resume in Latex
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
 
-\documentclass[letterpaper,10.5pt]{article}
+\documentclass[letterpaper,11pt]{article}
 
+\usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
+\usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage{tabularx}
+\usepackage{multirow}
 
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhf{} % clear all header and footer fields
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-\addtolength{\oddsidemargin}{-0.55in}
-\addtolength{\evensidemargin}{-0.55in}
-\addtolength{\textwidth}{1.1in}
-\addtolength{\topmargin}{-0.6in}
-\addtolength{\textheight}{1.2in}
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
 
 \urlstyle{same}
+
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+% Sections formatting
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-\newcommand{\resumeItem}[1]{\item\small{#1}\vspace{-2pt}}
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeItemNH}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
     \end{tabular*}\vspace{-5pt}
 }
 
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-5pt}
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-2pt}}
+
+\newcommand{\resumeProjectItem}[4]{%
+  \noindent
+  \textbf{#1 \href{#2}{[\underline{Link}]}} \hfill {#3} \\ % Project title + Link (left), Technologies (right)
+  \vspace{-5pt} % Adjust the vertical spacing
+  \begin{itemize} % Start itemized list for the description
+    \item #4 % Description of the project
+  \end{itemize}
+  \vspace{-5pt} % Adjust overall spacing after the description
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,label={}]}
+\newcommand{\resumeSubHeadingListStartBullets}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Create resume header command. Parameters: name, email, phone, GitHub, location
+\newcommand{\resumeHeader}[5]{
+    \begin{center}
+        {\Huge \textbf{#1}} \\[0.5em]
+        \underline{\href{mailto:#2}{#2}} 
+        \textbar \space #3 
+        \textbar \space \underline{\href{https://github.com/#4}{github/#4}} 
+        \textbar \space \underline{\href{https://linkedin.com/in/#5}{linkedin/#5}}
+    \end{center}
+}
+
+\usepackage{array}
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{38}{47}} 
+\newcolumntype{L}{>{\hb@xt@\z@\bgroup}l<{\hss\egroup}}
+\newcolumntype{C}{>{\centering\arraybackslash}c}
+\newcolumntype{R}{>{\hb@xt@\z@\bgroup\hss}r<{\egroup}}
+\makeatother
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{document}
 
-%----------HEADING----------
+%----------HEADING-----------------
 \begin{center}
-    \textbf{\Huge \scshape Shardul Negi} \\ \vspace{2pt}
-    \small
-    \href{mailto:shardul.exe@gmail.com}{shardul.exe@gmail.com} $|$
-    +91-9660442629 $|$
-    \href{https://github.com/sharduln30}{github/sharduln30} $|$
-    \href{https://linkedin.com/in/shardulnegi}{linkedin/shardulnegi}
+    \resumeHeader{Shardul Negi}{shardul.exe@gmail.com}{+91-9660442629}{sharduln30}{shardulnegi}
 \end{center}
 
-%-----------PROFESSIONAL SUMMARY-----------
-\section{Professional Summary}
-\small{Senior Software Engineer with \textbf{5+ years} building \textbf{high-scale distributed systems} in fintech. At \textbf{PayU}, architected services processing tens of thousands of daily transactions across lending integrations with \textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, and BharatPe}. Expertise in \textbf{Java, Spring Boot, AWS, Kafka}, microservices, and event-driven architectures.}
-
-%-----------WORK EXPERIENCE-----------
-\section{Work Experience}
-  \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {\textbf{PayU}}{Gurugram, India}
-      {Senior Software Engineer $|$ \small{Lending platform for \textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe}}}{May 2022 -- Present}
-      \resumeItemListStart
-        \resumeItem{\textbf{Centralized Notification Service (CNS):} Architected unified notification platform replacing fragmented SMS \& Email infra, processing \textbf{10K--50K msgs/day}. Built retry engine with DLQ reducing failures by \textbf{\raise.17ex\hbox{$\scriptstyle\sim$}40\%}, achieving \textbf{98\%+ delivery rate}. Kafka priority queues cut \textbf{OTP latency by \raise.17ex\hbox{$\scriptstyle\sim$}35\%}. Template engine reduced partner onboarding from \textbf{3--5 days to <2 hours}.}
-        \resumeItem{\textbf{Partner Integration Platform:} Collaborated with \textbf{6 partner} engineering teams. Designed APIs for loan origination, disbursement \& mandates with \textbf{99.5\%+ uptime} and \textbf{sub-200ms p95} latency.}
-        \resumeItem{\textbf{eNACH Mandate Integration:} Scalable mandate service achieving \textbf{\raise.17ex\hbox{$\scriptstyle\sim$}90\% success rate}. Redis caching \& async processing boosted throughput by \textbf{3x}.}
-        \resumeItem{\textbf{Loan Document Generation:} Template-based system with Spring Boot \& Thymeleaf -- \textbf{60\%} less dev effort, \textbf{30\%} faster processing.}
-        \resumeItem{\textbf{V-KYC Integration:} Compliant Video KYC with intelligent method selection, improving compliance turnaround.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {\textbf{Tata Consultancy Services}}{Noida, India}
-      {Software Engineer}{Oct 2020 -- May 2022}
-      \resumeItemListStart
-        \resumeItem{Built \textbf{microservice-based billing app} with Spring Boot \& MS SQL for accounting workflows.}
-        \resumeItem{Led \textbf{Oracle-to-Azure SQL migration} across \textbf{50+ tables} with \textbf{zero data loss}.}
-        \resumeItem{Drove JUnit coverage from \textbf{\raise.17ex\hbox{$\scriptstyle\sim$}30\% to 80\%+}, reducing production defects.}
-      \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
-
-%-----------PROJECTS-----------
-\section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{Online Doubt Support Portal} $|$ \emph{HTML, CSS, JavaScript, Bootstrap, Socket.IO} \href{https://online-doubt-support-portal.onrender.com}{\textbf{[Link]}}}{}
-          \resumeItemListStart
-            \resumeItem{Real-time collaboration platform with whiteboard, code editor, and \textbf{bidirectional messaging} via Socket.IO.}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{MS-Excel Clone} $|$ \emph{JavaScript, Graph Theory, Data Structures} \href{https://github.com/sharduln30/Excel-Clone}{\textbf{[Link]}}}{}
-          \resumeItemListStart
-            \resumeItem{Browser-based spreadsheet with \textbf{circular reference detection} (graph theory), \textbf{topological sort} for dependencies, \textbf{stack-based infix parsing} for formulas.}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-
-%-----------EDUCATION-----------
+%-----------EDUCATION-----------------
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {\textbf{Manipal University Jaipur}}{India}
-      {B.Tech, Computer Science \& Communication Engineering $|$ \textbf{CGPA: 8.75/10.0}}{Aug 2016 -- Jun 2020}
+      {Manipal University}{Jaipur, India}
+      {B.Tech in Computer Sc. \& Communication Engineering, CGPA: 8.75/10.0}{Aug 2016 -- Jun 2020}
       \resumeItemListStart
-        \resumeItem{Coursework: Data Structures \& Algorithms, OOP, Operating Systems, DBMS, Computer Networks, Distributed Systems}
+        \resumeItem{Coursework}
+          {Data Structures \& Algorithms, Object-Oriented Programming, Operating Systems, Database Systems, Web Development}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
-%-----------TECHNICAL SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages:}{ Java, SQL, HTML, CSS} \\
-     \textbf{Frameworks:}{ Spring Boot, Thymeleaf} \hfill
-     \textbf{Databases:}{ MySQL, MS SQL, Oracle, Azure SQL, Redis} \\
-     \textbf{Cloud \& Infra:}{ AWS (S3, EC2, SES, SNS, SQS), Docker, Linux, CI/CD} \hfill
-     \textbf{Messaging:}{ Kafka, SNS, SQS} \\
-     \textbf{Architecture:}{ Microservices, Event-Driven, REST APIs, System Design, Distributed Systems}
-    }}
- \end{itemize}
 
-%-----------LEADERSHIP & ACHIEVEMENTS-----------
+%-----------EXPERIENCE-----------------
+\section{Work Experience}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {PayU}{Gurugram, India}
+      {Senior Software Engineer \textbar{} Lending for \textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe}}{May 2022 -- Present}
+
+      \resumeItemListStart
+        \resumeItemNH{\textbf{Centralized Notification Service (CNS):} Architected unified notification platform replacing fragmented SMS \& Email infra, processing \textbf{10K--50K msgs/day}. Built retry engine with \textbf{DLQ}, reducing failures by \textbf{$\sim$40\%} and achieving \textbf{98\%+ delivery rate}. \textbf{Kafka} priority queues cut \textbf{OTP latency by $\sim$35\%}. Template engine reduced partner onboarding from \textbf{3--5 days to $<$2 hours}.}
+        \resumeItemNH{\textbf{Partner Integration Platform:} Collaborated with \textbf{6 partner} engineering teams (\textbf{GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe}). Designed APIs for loan origination, disbursement \& mandates with \textbf{99.5\%+ uptime} and \textbf{sub-200ms p95} latency.}
+        \resumeItemNH{\textbf{eNACH Mandate Integration:} Designed scalable eNACH mandate service achieving \textbf{$\sim$90\% success rate}. Integrated \textbf{Redis} caching \& \textbf{async processing}, boosting throughput by \textbf{3x}.}
+        \resumeItemNH{\textbf{Loan Document Generation:} Template-based system using \textbf{Java Spring Boot} and \textbf{Thymeleaf} -- \textbf{60\%} less dev effort, \textbf{30\%} faster processing, near-zero document errors.}
+        \resumeItemNH{\textbf{V-KYC Integration:} Delivered compliant \textbf{Video KYC} solution with intelligent method selection based on KYC type, improving compliance turnaround.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tata Consultancy Services}{Noida, India}
+      {Software Engineer}{Oct 2020 -- May 2022}
+      \resumeItemListStart
+        \resumeItemNH{Built \textbf{microservice-based billing application} for accounting teams using \textbf{Spring Boot} and \textbf{MS SQL}, streamlining allowance processing workflows.}
+        \resumeItemNH{Led \textbf{Oracle-to-Azure SQL data migration} using SSMA across \textbf{50+ tables} with \textbf{zero data loss}.}
+        \resumeItemNH{Drove JUnit test coverage from \textbf{$\sim$30\% to 80\%+}, reducing production defects.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+\section{Projects}
+
+    \resumeProjectItem{Online Doubt Support Portal}{https://online-doubt-support-portal.onrender.com}{HTML \textbar \space CSS \textbar \space JavaScript \textbar \space Bootstrap}{A portal integrated with whiteboard, code editor and chat box.
+    \item Implemented chat box using Socket.IO, an event-based bidirectional communication layer for real-time web applications.}
+
+    \resumeProjectItem{MS-Excel Clone}{https://github.com/sharduln30/Excel-Clone}{Web Application \textbar \space Data Structures}{A web application for basic tasks like saving, loading, and opening files, with text and cell editing features (font-size, font-style, text-align).
+    \item Used graph theory to detect circular references while implementing the formula tab feature.
+    \item Applied inbuilt stack functionality for Infix Evaluation in the formula tab. Implemented Topological Sort to resolve cell dependencies.}
+
+
+%-----------LEADERSHIP & ACHIEVEMENTS-----------------
 \section{Leadership \& Achievements}
-\resumeItemListStart
-    \resumeItem{\textbf{Architected PayU's CNS} from design doc to production -- backbone of lending communication across \textbf{6 partners}.}
-    \resumeItem{\textbf{Finalist, INNOVRITI 4.0} -- B-PLAN competition at Manipal University Jaipur (\textbf{top 5 of 100+ teams}).}
-    \resumeItem{\textbf{Led cross-cultural team} at Heig-vd, \textbf{Switzerland} during Business Engineering program.}
-\resumeItemListEnd
+  \resumeSubHeadingListStartBullets
+    \resumeItemNH{\textbf{Architected PayU's CNS} from design doc to production -- backbone of all lending communication across \textbf{6 major partners} (GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe).}
+    \resumeItemNH{Qualified for the \textbf{final round of INNOVRITI 4.0}, annual B-PLAN competition at Manipal University Jaipur (\textbf{top 5 of 100+ teams}).}
+    \resumeItemNH{\textbf{Led cross-cultural team} as team head during Business Engineering program at \textbf{Heig-vd, Switzerland}.}
+  \resumeSubHeadingListEnd
 
+%--------SKILLS------------
+\section{Skills}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Languages}
+      {Java, SQL, HTML/CSS}
+    \resumeSubItem{Frameworks \& Tools}
+      {Spring Boot, Thymeleaf, Git, Redis, Kafka, Docker, Linux, AWS (S3, EC2, SES, SNS, SQS), CI/CD, JIRA}
+    \resumeSubItem{Architecture}
+      {Microservices, Event-Driven Architecture, REST APIs, System Design, Distributed Systems}
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
 \end{document}
