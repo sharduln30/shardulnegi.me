@@ -1,85 +1,69 @@
 "use client";
 
-import { useInView } from "@/hooks/useInView";
+import { Reveal } from "./motion";
+import Marquee from "./Marquee";
 
 const STATS = [
-  { label: "YEARS EXP", value: "5+" },
-  { label: "PARTNERS", value: "6" },
-  { label: "DAILY TXN", value: "50K+" },
-  { label: "UPTIME", value: "99.5%" },
+  { val: "5+", label: "Years" },
+  { val: "10M+", label: "Events/Day" },
+  { val: "99.9%", label: "Uptime" },
+  { val: "6+", label: "Partners" },
+  { val: "3x", label: "Scale" },
+  { val: "35%", label: "Latency ↓" },
 ];
 
 export default function About() {
-  const { ref, isInView } = useInView();
-
   return (
-    <section id="about" className="py-24 px-6">
-      <div ref={ref} className="max-w-6xl mx-auto">
-        <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
-            02 — Driver Profile
-          </span>
-          <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-12">
-            ABOUT <span className="text-f1-red">ME</span>
+    <section id="about" className="section-cream section-rounded py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <Reveal>
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-8 h-8 rounded-full bg-dark text-cream text-xs font-bold flex items-center justify-center">01</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted">About</span>
+          </div>
+        </Reveal>
+
+        <Reveal custom={1}>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] mb-6 max-w-5xl text-dark">
+            Hey, I'm <span className="text-indigo">Shardul Negi</span>.
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div
-            className={`md:col-span-2 fade-up ${isInView ? "visible" : ""}`}
-            style={{ "--delay": "0.1s" } as React.CSSProperties}
-          >
-            <div className="bg-f1-card border border-f1-border rounded-lg p-8 carbon-fiber">
-              <div className="flex items-start gap-6 mb-6">
-                <div className="w-20 h-20 rounded-full bg-f1-gray border-2 border-f1-red flex items-center justify-center font-[family-name:var(--font-orbitron)] text-2xl font-bold text-f1-red shrink-0">
-                  SN
-                </div>
-                <div>
-                  <h3 className="font-[family-name:var(--font-orbitron)] text-xl font-bold">
-                    Shardul Negi
-                  </h3>
-                  <p className="text-f1-red text-sm font-[family-name:var(--font-mono)]">
-                    Senior Software Engineer @ PayU
-                  </p>
-                  <p className="text-f1-muted text-xs mt-1">
-                    Gurugram, India
-                  </p>
-                </div>
-              </div>
+        <Reveal custom={2}>
+          <p className="font-[family-name:var(--font-display)] text-xl md:text-2xl lg:text-3xl font-bold tracking-tight leading-[1.3] mb-14 max-w-4xl text-dark/60">
+            Senior Engineer who architects fault-tolerant distributed systems, event-driven platforms, and APIs that serve millions.
+          </p>
+        </Reveal>
 
-              <p className="text-f1-muted leading-relaxed text-sm">
-                Senior Software Engineer with 5+ years of experience designing
-                and building high-scale distributed backend systems in fintech.
-                At PayU, I architect services processing tens of thousands of
-                daily transactions across lending integrations with major
-                partners. Deep expertise in Java, Spring Boot, AWS, Kafka,
-                microservices, and event-driven architectures.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className={`fade-up ${isInView ? "visible" : ""}`}
-            style={{ "--delay": "0.2s" } as React.CSSProperties}
-          >
-            <div className="grid grid-cols-2 gap-3 h-full">
-              {STATS.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-f1-card border border-f1-border rounded-lg p-4 flex flex-col items-center justify-center text-center"
-                >
-                  <span className="font-[family-name:var(--font-orbitron)] text-2xl font-bold text-f1-red">
-                    {stat.value}
-                  </span>
-                  <span className="text-f1-muted text-[10px] font-[family-name:var(--font-orbitron)] tracking-wider mt-1">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+          <Reveal custom={3}>
+            <p className="text-text-muted text-[15px] leading-[1.9]">
+              At PayU, I own core lending infra — from the Centralized Notification Service
+              to partner integrations with GPay, PhonePe, Paytm, Meesho, Swiggy, and BharatPe.
+            </p>
+          </Reveal>
+          <Reveal custom={4}>
+            <p className="text-text-muted text-[15px] leading-[1.9]">
+              Previously at TCS building billing microservices and leading database migrations.
+              Clean architecture, measurable impact, systems that recover gracefully.
+            </p>
+          </Reveal>
         </div>
       </div>
+
+      <Reveal custom={5} className="mt-16">
+        <div className="border-y border-dark/10 py-6">
+          <Marquee speed={30}>
+            {STATS.map((s, i) => (
+              <div key={i} className="flex items-center gap-3 px-10 whitespace-nowrap">
+                <span className="text-3xl md:text-4xl font-black text-dark tracking-tight">{s.val}</span>
+                <span className="text-[11px] font-bold text-text-muted uppercase tracking-[0.15em]">{s.label}</span>
+                <span className="w-2 h-2 rounded-full bg-lime ml-4" />
+              </div>
+            ))}
+          </Marquee>
+        </div>
+      </Reveal>
     </section>
   );
 }

@@ -1,290 +1,140 @@
 @import "tailwindcss";
 
 @theme {
-  --color-f1-black: #0a0a0a;
-  --color-f1-dark: #111111;
-  --color-f1-gray: #1a1a2e;
-  --color-f1-red: #E10600;
-  --color-f1-red-dark: #b80500;
-  --color-f1-green: #00FF87;
-  --color-f1-white: #f0f0f0;
-  --color-f1-muted: #888888;
-  --color-f1-card: #161616;
-  --color-f1-border: #2a2a2a;
+  /* === BUTTERMAX-INSPIRED VIBRANT PALETTE === */
+  --color-dark: #0a0a0a;
+  --color-cream: #f5f0e8;
+  --color-warm: #faf6ee;
 
-  --font-orbitron: "Orbitron", sans-serif;
-  --font-inter: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --color-lime: #CCFF00;
+  --color-pink: #FF3D71;
+  --color-indigo: #6C63FF;
+  --color-orange: #FF8C42;
+  --color-cyan: #00D4AA;
+  --color-red: #FF0737;
+  --color-yellow: #FFC800;
+  --color-blue: #0369D8;
 
-  --ease-apple: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --color-text-dark: #0a0a0a;
+  --color-text-light: #f5f5f5;
+  --color-text-muted: #666666;
+  --color-text-muted-light: #999999;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
-  background-color: var(--color-f1-black);
-  color: var(--color-f1-white);
-  font-family: var(--font-inter);
+  background-color: var(--color-dark);
+  color: var(--color-text-light);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background-color: var(--color-f1-red);
-  color: white;
+  background-color: var(--color-lime);
+  color: var(--color-dark);
 }
 
-/* ============ FADE-UP ANIMATION SYSTEM ============ */
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.8s var(--ease-apple),
-    transform 0.8s var(--ease-apple);
-  transition-delay: var(--delay, 0s);
-  will-change: transform, opacity;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-in {
-  opacity: 0;
-  transition: opacity 0.8s var(--ease-apple);
-  transition-delay: var(--delay, 0s);
-  will-change: opacity;
-}
-
-.fade-in.visible {
-  opacity: 1;
-}
-
-.scale-in {
-  opacity: 0;
-  transform: scale(0.95);
-  transition:
-    opacity 0.6s var(--ease-apple),
-    transform 0.6s var(--ease-apple);
-  transition-delay: var(--delay, 0s);
-  will-change: transform, opacity;
-}
-
-.scale-in.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ============ RACING LIGHTS ============ */
-
-@keyframes lightOn {
-  0% { opacity: 0.15; box-shadow: none; }
-  100% { opacity: 1; box-shadow: 0 0 30px 10px var(--color-f1-red); }
-}
-
-@keyframes lightsOut {
-  0% { opacity: 1; box-shadow: 0 0 30px 10px var(--color-f1-red); }
-  100% { opacity: 0.05; box-shadow: none; }
-}
-
-@keyframes goGlow {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-.racing-light {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background-color: var(--color-f1-red);
-  opacity: 0.15;
-}
-
-.racing-light.on {
-  animation: lightOn 0.3s var(--ease-apple) forwards;
-  animation-delay: var(--light-delay, 0s);
-}
-
-.racing-light.out {
-  animation: lightsOut 0.2s var(--ease-apple) forwards;
-  animation-delay: var(--out-delay, 0s);
-}
-
-/* ============ SKILL BARS ============ */
-
-.skill-bar-fill {
-  width: 0%;
-  transition: width 1.2s var(--ease-apple);
-  transition-delay: var(--delay, 0s);
-}
-
-.skill-bar-fill.visible {
-  width: var(--skill-level);
-}
-
-/* ============ TIMELINE DRAW ============ */
-
-.timeline-line {
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 1.5s var(--ease-apple);
-}
-
-.timeline-line.visible {
-  transform: scaleY(1);
-}
-
-/* ============ CHECKERED DIVIDER ============ */
-
-.checkered-divider {
-  height: 8px;
-  background-image:
-    linear-gradient(45deg, var(--color-f1-border) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--color-f1-border) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--color-f1-border) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--color-f1-border) 75%);
-  background-size: 16px 8px;
-  background-position: 0 0, 0 0, 8px 0, 8px 0;
-  opacity: 0.4;
-}
-
-/* ============ GRID BACKGROUND ============ */
-
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* ============ HERO RED GLOW ============ */
-
-.hero-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(225,6,0,0.08) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* === GRAIN === */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
   pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  mix-blend-mode: overlay;
 }
 
-/* ============ CARBON FIBER TEXTURE ============ */
-
-.carbon-fiber {
-  background:
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
-  background-size: 4px 4px;
+/* === COLOR BLOCK SECTIONS === */
+.section-dark {
+  background-color: var(--color-dark);
+  color: var(--color-text-light);
 }
 
-/* ============ SECTION ACCENT ============ */
+.section-cream {
+  background-color: var(--color-cream);
+  color: var(--color-text-dark);
+}
 
-.section-label {
+.section-lime {
+  background-color: var(--color-lime);
+  color: var(--color-text-dark);
+}
+
+.section-indigo {
+  background-color: var(--color-indigo);
+  color: var(--color-text-light);
+}
+
+/* === MARQUEE === */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* === BUTTONS === */
+.btn-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.section-label::before {
-  content: "";
-  width: 24px;
-  height: 2px;
-  background-color: var(--color-f1-red);
-  display: inline-block;
+.btn-pill:hover {
+  transform: translateY(-2px) scale(1.03);
 }
 
-/* ============ HOVER INTERACTIONS ============ */
-
-.card-hover {
-  transition:
-    transform 0.3s var(--ease-apple),
-    box-shadow 0.3s var(--ease-apple);
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.btn-press {
-  transition:
-    background-color 0.2s var(--ease-apple),
-    transform 0.1s var(--ease-apple);
-}
-
-.btn-press:hover {
-  filter: brightness(1.1);
-}
-
-.btn-press:active {
+.btn-pill:active {
   transform: scale(0.97);
+  transition-duration: 0.15s;
 }
 
-/* ============ LINK UNDERLINE ============ */
-
-.link-underline {
+/* === ROUNDED CORNER SECTIONS === */
+.section-rounded {
+  border-radius: 2.5rem 2.5rem 0 0;
   position: relative;
+  z-index: 2;
 }
 
-.link-underline::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-f1-red);
-  transition: width 0.3s var(--ease-apple);
-}
+/* === LENIS === */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
 
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* ============ REDUCED MOTION ============ */
-
+/* === REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
-  .fade-up,
-  .fade-in,
-  .scale-in,
-  .skill-bar-fill,
-  .timeline-line,
-  .card-hover,
-  .btn-press,
-  .racing-light {
-    transition: none !important;
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .skill-bar-fill {
-    width: var(--skill-level) !important;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-/* ============ SCROLLBAR ============ */
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-f1-black);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-f1-border);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-f1-red);
-}
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-dark); }
+::-webkit-scrollbar-thumb { background: rgba(204, 255, 0, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(204, 255, 0, 0.5); }

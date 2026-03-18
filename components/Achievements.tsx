@@ -1,113 +1,38 @@
 "use client";
 
-import { useInView } from "@/hooks/useInView";
+import { Reveal } from "./motion";
 
-const PODIUM = [
-  {
-    position: "P1",
-    title: "Centralized Notification Service",
-    description:
-      "Architected from design doc to production — now the backbone of all lending communication across 6 major partners.",
-  },
-  {
-    position: "P2",
-    title: "INNOVRITI 4.0 Finalist",
-    description:
-      "Qualified for the final round of the annual B-PLAN competition at Manipal University Jaipur — top 5 out of 100+ teams.",
-  },
-  {
-    position: "P3",
-    title: "International Team Leadership",
-    description:
-      "Led cross-cultural team as head during Business Engineering program at Heig-vd, Switzerland.",
-  },
-];
-
-const STATS = [
-  { label: "Years of Experience", value: "5+" },
-  { label: "Partner Integrations", value: "6" },
-  { label: "Systems Architected", value: "4" },
-  { label: "Daily Notifications", value: "50K+" },
+const ITEMS = [
+  { metric: "10M+", label: "Events/Day", color: "text-lime" },
+  { metric: "35%", label: "Latency Cut", color: "text-pink" },
+  { metric: "3x", label: "Throughput", color: "text-indigo" },
+  { metric: "99.9%", label: "Delivery", color: "text-orange" },
 ];
 
 export default function Achievements() {
-  const { ref, isInView } = useInView();
-
   return (
-    <section id="achievements" className="py-24 px-6">
-      <div ref={ref} className="max-w-6xl mx-auto">
-        <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
-            06 — Podium
-          </span>
-          <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-12">
-            ACHIEVE<span className="text-f1-red">MENTS</span>
+    <section className="section-lime py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <Reveal>
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-8 h-8 rounded-full bg-dark text-lime text-xs font-bold flex items-center justify-center">05</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-dark/50">Impact</span>
+          </div>
+        </Reveal>
+        <Reveal custom={1}>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-extrabold tracking-tight text-dark mb-12">
+            Numbers that matter.
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {PODIUM.map((item, i) => (
-            <div
-              key={item.position}
-              className={`fade-up ${isInView ? "visible" : ""}`}
-              style={
-                { "--delay": `${0.1 + i * 0.1}s` } as React.CSSProperties
-              }
-            >
-              <div
-                className={`bg-f1-card border rounded-lg p-6 h-full card-hover relative overflow-hidden ${
-                  i === 0 ? "border-f1-red/40" : "border-f1-border"
-                }`}
-              >
-                <span
-                  className={`font-[family-name:var(--font-orbitron)] text-6xl font-bold absolute -top-2 -right-1 ${
-                    i === 0
-                      ? "text-f1-red/15"
-                      : i === 1
-                        ? "text-f1-white/8"
-                        : "text-f1-white/5"
-                  }`}
-                >
-                  {item.position}
-                </span>
-                <div className="relative z-10">
-                  <span
-                    className={`inline-block px-2 py-0.5 text-[10px] font-[family-name:var(--font-orbitron)] tracking-wider rounded mb-3 ${
-                      i === 0
-                        ? "bg-f1-red/20 text-f1-red"
-                        : "bg-f1-border text-f1-muted"
-                    }`}
-                  >
-                    {item.position}
-                  </span>
-                  <h3 className="font-[family-name:var(--font-orbitron)] text-sm font-bold mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-f1-muted text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {ITEMS.map((item, i) => (
+            <Reveal key={i} custom={i + 2}>
+              <div className="bg-dark rounded-3xl p-6 md:p-8 text-center aspect-square flex flex-col items-center justify-center">
+                <div className={`text-3xl sm:text-4xl md:text-5xl font-black ${item.color} tracking-tight mb-2`}>{item.metric}</div>
+                <div className="text-[10px] md:text-[11px] font-bold text-text-muted-light uppercase tracking-[0.15em]">{item.label}</div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {STATS.map((stat, i) => (
-            <div
-              key={stat.label}
-              className={`fade-up ${isInView ? "visible" : ""} text-center p-6 bg-f1-card border border-f1-border rounded-lg`}
-              style={
-                { "--delay": `${0.3 + i * 0.08}s` } as React.CSSProperties
-              }
-            >
-              <span className="font-[family-name:var(--font-orbitron)] text-3xl font-bold text-f1-red block">
-                {stat.value}
-              </span>
-              <span className="text-f1-muted text-[10px] font-[family-name:var(--font-orbitron)] tracking-wider mt-1 block">
-                {stat.label}
-              </span>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

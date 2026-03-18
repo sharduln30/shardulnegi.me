@@ -1,91 +1,38 @@
 "use client";
 
-import { useInView } from "@/hooks/useInView";
+import { Reveal } from "./motion";
 
 const POSTS = [
-  {
-    title: "Designing a Centralized Notification Service",
-    excerpt:
-      "How we replaced fragmented SMS & Email infra at PayU with a unified, multi-channel platform processing 50K+ notifications daily.",
-    date: "2025",
-    circuit: "System Design",
-    readTime: "8 min",
-  },
-  {
-    title: "Kafka Priority Queues in Production",
-    excerpt:
-      "Lessons learned implementing 4-tier priority queuing for real-time OTP delivery alongside bulk transactional notifications.",
-    date: "2025",
-    circuit: "Backend",
-    readTime: "6 min",
-  },
-  {
-    title: "Building Retry Engines with DLQ",
-    excerpt:
-      "A practical guide to exponential backoff, dead letter queues, and one-click replay for notification delivery at scale.",
-    date: "2024",
-    circuit: "Reliability",
-    readTime: "5 min",
-  },
+  { title: "Designing a Fault-Tolerant Notification Service", tag: "System Design", link: "#" },
+  { title: "Optimizing DB Queries for High-Throughput APIs", tag: "Performance", link: "#" },
+  { title: "Microservices vs Monolith: A Practical Take", tag: "Architecture", link: "#" },
 ];
 
 export default function Blog() {
-  const { ref, isInView } = useInView();
-
   return (
-    <section id="blog" className="py-24 px-6">
-      <div ref={ref} className="max-w-6xl mx-auto">
-        <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
-            08 — Race Reports
-          </span>
-          <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-4">
-            BLOG <span className="text-f1-red">POSTS</span>
-          </h2>
-          <p className="text-f1-muted text-sm mb-12">
-            Coming soon — technical deep dives into systems I&apos;ve built.
-          </p>
-        </div>
+    <section className="section-cream py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <Reveal>
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-8 h-8 rounded-full bg-dark text-cream text-xs font-bold flex items-center justify-center">07</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted">Writing</span>
+          </div>
+        </Reveal>
+        <Reveal custom={1}>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-extrabold tracking-tight text-dark mb-12">Notes.</h2>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {POSTS.map((post, i) => (
-            <div
-              key={post.title}
-              className={`fade-up ${isInView ? "visible" : ""}`}
-              style={
-                { "--delay": `${0.1 + i * 0.1}s` } as React.CSSProperties
-              }
-            >
-              <div className="bg-f1-card border border-f1-border rounded-lg p-6 h-full card-hover flex flex-col opacity-70 hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="px-2 py-0.5 text-[10px] font-[family-name:var(--font-orbitron)] bg-f1-red/10 text-f1-red border border-f1-red/20 rounded">
-                    {post.circuit}
-                  </span>
-                  <span className="text-f1-muted text-[10px] font-[family-name:var(--font-mono)]">
-                    {post.date}
-                  </span>
-                </div>
-
-                <h3 className="font-[family-name:var(--font-orbitron)] text-sm font-bold mb-2">
-                  {post.title}
-                </h3>
-
-                <p className="text-f1-muted text-sm leading-relaxed mb-4 flex-1">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-f1-muted text-[10px] font-[family-name:var(--font-mono)]">
-                    {post.readTime} read
-                  </span>
-                  <span className="text-f1-muted text-[10px] font-[family-name:var(--font-orbitron)] tracking-wider">
-                    COMING SOON
-                  </span>
-                </div>
+        {POSTS.map((p, i) => (
+          <Reveal key={i} custom={i + 2}>
+            <a href={p.link} className="group flex items-center justify-between py-5 border-b border-dark/10">
+              <div>
+                <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-indigo mr-3">{p.tag}</span>
+                <h3 className="text-base md:text-lg font-semibold text-dark group-hover:text-indigo transition-colors duration-300 mt-1">{p.title}</h3>
               </div>
-            </div>
-          ))}
-        </div>
+              <svg className="w-4 h-4 text-dark/30 -rotate-45 group-hover:rotate-0 group-hover:text-dark transition-all duration-500 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

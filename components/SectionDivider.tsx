@@ -1,3 +1,3 @@
 export default function SectionDivider() {
-  return <div className="checkered-divider w-full my-0" />;
+  return <div className="section-divider w-full my-0" />;
 }

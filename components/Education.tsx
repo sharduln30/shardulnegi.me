@@ -1,76 +1,33 @@
 "use client";
 
-import { useInView } from "@/hooks/useInView";
+import { Reveal } from "./motion";
 
 export default function Education() {
-  const { ref, isInView } = useInView();
-
   return (
-    <section id="education" className="py-24 px-6 bg-f1-dark">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
-            07 — Race Academy
-          </span>
-          <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-12">
-            EDUCA<span className="text-f1-red">TION</span>
-          </h2>
-        </div>
-
-        <div
-          className={`fade-up ${isInView ? "visible" : ""}`}
-          style={{ "--delay": "0.15s" } as React.CSSProperties}
-        >
-          <div className="bg-f1-card border border-f1-border rounded-lg p-8 card-hover">
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-              <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-lg bg-f1-red/10 border border-f1-red/20 flex items-center justify-center font-[family-name:var(--font-orbitron)] text-lg font-bold text-f1-red shrink-0">
-                  MUJ
-                </div>
-                <div>
-                  <h3 className="font-[family-name:var(--font-orbitron)] text-base font-bold">
-                    Manipal University Jaipur
-                  </h3>
-                  <p className="text-f1-muted text-sm mt-0.5">
-                    B.Tech, Computer Science & Communication Engineering
-                  </p>
-                  <div className="flex items-center gap-3 mt-2">
-                    <span className="px-2 py-0.5 text-[10px] font-[family-name:var(--font-mono)] bg-f1-green/10 text-f1-green border border-f1-green/20 rounded">
-                      CGPA: 8.75/10.0
-                    </span>
-                  </div>
-                </div>
+    <section id="education" className="section-dark py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <Reveal>
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">06</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted-light">Education</span>
+          </div>
+        </Reveal>
+        <Reveal custom={1}>
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-3xl p-8 md:p-10">
+            <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-6 gap-3">
+              <div>
+                <h3 className="text-xl font-bold text-text-light mb-1">B.Tech — CS & Communication Engineering</h3>
+                <span className="text-sm text-text-muted-light">Manipal University, Jaipur · CGPA: 8.75/10</span>
               </div>
-              <span className="text-f1-muted text-xs font-[family-name:var(--font-mono)] whitespace-nowrap">
-                Aug 2016 — Jun 2020
-              </span>
+              <span className="text-xs font-semibold text-text-muted-light bg-white/[0.05] px-3 py-1.5 rounded-full shrink-0">2016 – 2020</span>
             </div>
-
-            <div className="mt-6 pt-6 border-t border-f1-border/50">
-              <h4 className="text-f1-muted text-[10px] font-[family-name:var(--font-orbitron)] tracking-wider mb-3">
-                RELEVANT COURSEWORK
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Data Structures & Algorithms",
-                  "Object-Oriented Programming",
-                  "Operating Systems",
-                  "Database Systems",
-                  "Computer Networks",
-                  "Web Development",
-                  "Distributed Systems",
-                ].map((course) => (
-                  <span
-                    key={course}
-                    className="px-3 py-1 text-xs bg-f1-border/30 text-f1-muted rounded"
-                  >
-                    {course}
-                  </span>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {["DSA", "OOP", "Operating Systems", "Database Systems", "Computer Networks"].map((c) => (
+                <span key={c} className="px-3 py-1 text-xs font-medium rounded-full bg-lime/10 text-lime">{c}</span>
+              ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

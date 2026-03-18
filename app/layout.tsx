@@ -1,58 +1,22 @@
 import type { Metadata } from "next";
-import { Orbitron, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  variable: "--font-orbitron",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Shardul Negi | Senior Software Engineer",
-  description:
-    "Portfolio of Shardul Negi — Senior Software Engineer at PayU, building high-scale distributed systems for GPay, PhonePe, Paytm, Meesho, Swiggy & BharatPe.",
-  keywords: [
-    "Shardul Negi",
-    "Software Engineer",
-    "PayU",
-    "Java",
-    "Spring Boot",
-    "System Design",
-    "Portfolio",
-  ],
-  openGraph: {
-    title: "Shardul Negi | Senior Software Engineer",
-    description:
-      "Senior Software Engineer building high-scale fintech systems at PayU.",
-    type: "website",
-  },
+  title: "Shardul Negi — Senior Software Engineer",
+  description: "5+ years building high-scale distributed systems, microservices, and fintech platforms.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${orbitron.variable} ${inter.variable} ${jetbrainsMono.variable}`}
-    >
-      <body className="bg-f1-black text-f1-white font-[family-name:var(--font-inter)] antialiased">
-        {children}
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className="grain bg-dark text-text-light font-[family-name:var(--font-body)] antialiased">
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

@@ -1,131 +1,85 @@
 "use client";
 
-import { useInView } from "@/hooks/useInView";
+import { Reveal } from "./motion";
 
-const EXPERIENCES = [
+const ROLES = [
   {
     company: "PayU",
+    loc: "Gurugram",
     role: "Senior Software Engineer",
-    location: "Gurugram, India",
-    period: "May 2022 — Present",
-    highlight:
-      "Lending platform for GPay, PhonePe, Paytm, Meesho, Swiggy & BharatPe",
+    period: "May 2022 – Present",
+    color: "bg-lime",
     bullets: [
-      "Architected Centralized Notification Service (CNS) processing 10K-50K msgs/day with 98%+ delivery rate, ~40% fewer failures, and ~35% faster OTP delivery via Kafka priority queues.",
-      "Built partner integration APIs across 6 major partners with 99.5%+ uptime and sub-200ms p95 latency.",
-      "Designed eNACH mandate service achieving ~90% success rate, 3x throughput via Redis caching & async processing.",
-      "Built document generation system reducing dev effort by 60% and processing time by 30%.",
-      "Delivered V-KYC solution with intelligent method selection for compliance.",
+      "Architected CNS — 10M+ events/day, 98%+ delivery, DLQ retry, Kafka priority queues cutting OTP latency ~35%.",
+      "Partner integration APIs for GPay, PhonePe, Paytm, Meesho, Swiggy, BharatPe — 99.5% uptime, sub-200ms p95.",
+      "eNACH mandate service — Redis + async processing, 90% success, 3x throughput.",
+      "Template-based doc generation — 60% less dev effort, near-zero errors.",
     ],
-    tags: [
-      "Java",
-      "Spring Boot",
-      "Kafka",
-      "Redis",
-      "AWS",
-      "System Design",
-    ],
+    tech: ["Java", "Spring Boot", "Kafka", "Redis", "AWS", "Microservices"],
   },
   {
-    company: "Tata Consultancy Services",
+    company: "TCS",
+    loc: "Noida",
     role: "Software Engineer",
-    location: "Noida, India",
-    period: "Oct 2020 — May 2022",
-    highlight: null,
+    period: "Oct 2020 – May 2022",
+    color: "bg-indigo",
     bullets: [
-      "Built microservice-based billing app with Spring Boot & MS SQL for accounting workflows.",
-      "Led Oracle-to-Azure SQL migration across 50+ tables with zero data loss.",
-      "Drove JUnit coverage from ~30% to 80%+, reducing production defects.",
+      "Built microservice billing app — Spring Boot & MS SQL for accounting workflows.",
+      "Led Oracle-to-Azure SQL migration — 50+ tables, zero data loss.",
+      "JUnit coverage 30% → 80%+, reduced production defects.",
     ],
-    tags: ["Spring Boot", "MS SQL", "Azure", "JUnit", "REST APIs"],
+    tech: ["Java", "Spring Boot", "MS SQL", "Azure", "JUnit"],
   },
 ];
 
 export default function Experience() {
-  const { ref, isInView } = useInView(0.05);
-
   return (
-    <section id="experience" className="py-24 px-6">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <div className={`fade-up ${isInView ? "visible" : ""}`}>
-          <span className="section-label text-f1-red font-[family-name:var(--font-orbitron)] text-[10px] tracking-[0.3em] uppercase">
-            04 — Lap History
-          </span>
-          <h2 className="font-[family-name:var(--font-orbitron)] text-3xl md:text-4xl font-bold mt-2 mb-16">
-            RACE <span className="text-f1-red">CAREER</span>
+    <section id="experience" className="section-cream py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <Reveal>
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-8 h-8 rounded-full bg-dark text-cream text-xs font-bold flex items-center justify-center">03</span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted">Experience</span>
+          </div>
+        </Reveal>
+        <Reveal custom={1}>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-extrabold tracking-tight mb-12 text-dark">
+            Where I've worked.
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="relative">
-          <div
-            className={`absolute left-4 md:left-8 top-0 bottom-0 w-px bg-f1-red/30 timeline-line ${isInView ? "visible" : ""}`}
-          />
-
-          <div className="space-y-12">
-            {EXPERIENCES.map((exp, i) => (
-              <div
-                key={exp.company}
-                className={`relative pl-12 md:pl-20 fade-up ${isInView ? "visible" : ""}`}
-                style={
-                  { "--delay": `${0.2 + i * 0.15}s` } as React.CSSProperties
-                }
-              >
-                <div className="absolute left-2 md:left-6 top-1 w-5 h-5 rounded-full border-2 border-f1-red bg-f1-black flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-f1-red" />
+        <div className="space-y-6">
+          {ROLES.map((r, idx) => (
+            <Reveal key={idx} custom={idx + 2}>
+              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm">
+                <div className="flex flex-col md:flex-row md:items-start justify-between mb-6 gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className={`w-3 h-3 rounded-full ${r.color}`} />
+                    <div>
+                      <h3 className="text-xl font-bold text-dark">{r.role}</h3>
+                      <span className="text-sm text-text-muted">{r.company} · {r.loc}</span>
+                    </div>
+                  </div>
+                  <span className="text-xs font-semibold tracking-wider uppercase text-text-muted bg-cream px-3 py-1.5 rounded-full shrink-0">{r.period}</span>
                 </div>
 
-                <div className="bg-f1-card border border-f1-border rounded-lg p-6 md:p-8 card-hover">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
-                    <div>
-                      <h3 className="font-[family-name:var(--font-orbitron)] text-lg font-bold">
-                        {exp.company}
-                      </h3>
-                      <p className="text-f1-red text-sm font-[family-name:var(--font-mono)]">
-                        {exp.role}
-                      </p>
-                      <p className="text-f1-muted text-xs mt-0.5">
-                        {exp.location}
-                      </p>
-                    </div>
-                    <span className="text-f1-muted text-xs font-[family-name:var(--font-mono)] whitespace-nowrap">
-                      {exp.period}
-                    </span>
-                  </div>
+                <ul className="space-y-2 mb-6">
+                  {r.bullets.map((b, i) => (
+                    <li key={i} className="flex items-start text-text-muted text-[14px] leading-[1.75]">
+                      <span className={`mr-2 mt-[9px] w-1.5 h-1.5 rounded-full ${r.color} shrink-0`} />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
 
-                  {exp.highlight && (
-                    <p className="text-f1-green/80 text-xs font-[family-name:var(--font-mono)] mb-4 border-l-2 border-f1-green/30 pl-3">
-                      {exp.highlight}
-                    </p>
-                  )}
-
-                  <ul className="space-y-2.5">
-                    {exp.bullets.map((bullet, j) => (
-                      <li
-                        key={j}
-                        className="text-f1-muted text-sm leading-relaxed flex gap-2"
-                      >
-                        <span className="text-f1-red shrink-0 mt-1.5">
-                          ▸
-                        </span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2 mt-5">
-                    {exp.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 text-[10px] font-[family-name:var(--font-mono)] bg-f1-red/10 text-f1-red border border-f1-red/20 rounded"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {r.tech.map((t) => (
+                    <span key={t} className="px-3 py-1 text-[11px] font-semibold rounded-full bg-dark/5 text-dark/60">{t}</span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
