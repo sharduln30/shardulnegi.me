@@ -2,86 +2,67 @@
 
 import { Reveal } from "./motion";
 
-const JOURNEY = [
-  {
-    company: "PayU",
-    role: "Senior Software Engineer",
-    period: "May 2022 – Present",
-    location: "Bengaluru, India",
-    accent: "#CCFF00",
-  },
-  {
-    company: "Tata Consultancy Services",
-    role: "Assistant System Engineer",
-    period: "Oct 2020 – May 2022",
-    location: "Noida, India",
-    accent: "#6C63FF",
-  },
-  {
-    company: "Pepcoding Education",
-    role: "Web Development Intern",
-    period: "Jan 2021 – Jun 2021",
-    location: "Delhi, India",
-    accent: "#00D4AA",
-  },
-  {
-    company: "HEIG-VD",
-    role: "Business Engineering Intern",
-    period: "Jul 2019",
-    location: "Yverdon, Switzerland",
-    accent: "#FF8C42",
-  },
-  {
-    company: "CESI Ecole d'Ingénieurs",
-    role: "Industrial Engineering Intern",
-    period: "Jun 2019",
-    location: "Nanterre, France",
-    accent: "#FF3D71",
-  },
-  {
-    company: "DRDO",
-    role: "Software Engineering Intern",
-    period: "May 2019 – Jun 2019",
-    location: "Dehradun, India",
-    accent: "#FFC800",
-  },
+type Milestone = {
+  name: string;
+  role: string;
+  period: string;
+  location: string;
+  accent: string;
+  type: "edu" | "work";
+};
+
+const MILESTONES: Milestone[] = [
+  { name: "St. Thomas' College", role: "SSC", period: "2006 – 2014", location: "Dehradun", accent: "#FF8C42", type: "edu" },
+  { name: "Doon International", role: "HSC", period: "2014 – 2016", location: "Dehradun", accent: "#00D4AA", type: "edu" },
+  { name: "Manipal University", role: "B.Tech, CS & CE", period: "2016 – 2020", location: "Jaipur", accent: "#6C63FF", type: "edu" },
+  { name: "DRDO", role: "SWE Intern", period: "May – Jun 2019", location: "Dehradun", accent: "#FFC800", type: "work" },
+  { name: "CESI", role: "Industrial Eng Intern", period: "Jun 2019", location: "France", accent: "#FF3D71", type: "work" },
+  { name: "HEIG-VD", role: "Business Eng Intern", period: "Jul 2019", location: "Switzerland", accent: "#FF8C42", type: "work" },
+  { name: "Pepcoding", role: "Web Dev Intern", period: "Jan – Jul 2020", location: "Delhi", accent: "#00D4AA", type: "work" },
+  { name: "TCS", role: "Systems Engineer", period: "2020 – 2022", location: "Noida", accent: "#0369D8", type: "work" },
+  { name: "PayU", role: "Senior SWE", period: "2022 – Present", location: "Bengaluru", accent: "#CCFF00", type: "work" },
 ];
 
-function LocationIcon() {
-  return (
-    <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-  );
+const STEP = 220;
+const PAD = 120;
+const TRACK_W = PAD * 2 + (MILESTONES.length - 1) * STEP;
+const TRACK_H = 480;
+const MID_Y = TRACK_H / 2;
+const AMP = 70;
+
+const POINTS = MILESTONES.map((_, i) => ({
+  x: PAD + i * STEP,
+  y: MID_Y + (i % 2 === 0 ? -AMP : AMP),
+}));
+
+function buildPath(pts: { x: number; y: number }[]) {
+  if (pts.length < 2) return "";
+  let d = `M ${pts[0].x} ${pts[0].y}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const cx = (pts[i].x + pts[i + 1].x) / 2;
+    d += ` C ${cx} ${pts[i].y}, ${cx} ${pts[i + 1].y}, ${pts[i + 1].x} ${pts[i + 1].y}`;
+  }
+  return d;
 }
 
-function TimelineCard({ item }: { item: (typeof JOURNEY)[number] }) {
+const PATH_D = buildPath(POINTS);
+
+function MapPin({ color }: { color: string }) {
   return (
-    <div
-      className="rounded-2xl bg-white/[0.03] backdrop-blur-sm p-6 transition-colors hover:bg-white/[0.06] h-full"
-      style={{ borderWidth: 1, borderColor: `${item.accent}33` }}
-    >
-      <span
-        className="inline-block text-[11px] font-bold tracking-wider uppercase px-3 py-1 rounded-full text-text-muted-light mb-3"
-        style={{ backgroundColor: `${item.accent}18` }}
-      >
-        {item.period}
-      </span>
-      <h3 className="text-lg font-bold text-text-light mb-1">{item.company}</h3>
-      <p className="text-sm text-text-muted-light mb-2">{item.role}</p>
-      <p className="text-xs text-text-muted flex items-center gap-1.5">
-        <LocationIcon />
-        {item.location}
-      </p>
-    </div>
+    <svg width="24" height="30" viewBox="0 0 24 32" className="drop-shadow-lg">
+      <path
+        d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0z"
+        fill={color}
+      />
+      <circle cx="12" cy="12" r="4" fill="#0a0a0a" />
+    </svg>
   );
 }
 
 export default function Timeline() {
   return (
     <section className="section-dark py-24 md:py-32 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-3 mb-8">
             <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">
@@ -92,69 +73,118 @@ export default function Timeline() {
             </span>
           </div>
         </Reveal>
-
         <Reveal custom={1}>
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-extrabold tracking-tight mb-16 text-text-light">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-extrabold tracking-tight mb-12 text-text-light">
             The road so far.
           </h2>
         </Reveal>
-
-        {/* Mobile: single column with left line */}
-        <div className="md:hidden relative">
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-white/10" />
-          {JOURNEY.map((item, idx) => (
-            <Reveal key={idx} custom={idx + 2}>
-              <div className="relative pl-12 mb-10 last:mb-0">
-                <div
-                  className="absolute left-4 -translate-x-1/2 top-2 z-10 w-3 h-3 rounded-full ring-4 ring-dark"
-                  style={{ backgroundColor: item.accent }}
-                />
-                <TimelineCard item={item} />
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Desktop: two-column alternating grid with center spine */}
-        <div className="hidden md:block relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-px" />
-
-          {JOURNEY.map((item, idx) => {
-            const isLeft = idx % 2 === 0;
-            return (
-              <Reveal key={idx} custom={idx + 2}>
-                <div className="grid grid-cols-[1fr_3rem_1fr] items-start mb-10 last:mb-0">
-                  {/* Left column */}
-                  <div className={isLeft ? "" : "invisible"}>
-                    {isLeft && (
-                      <div className="pr-4">
-                        <TimelineCard item={item} />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Center dot */}
-                  <div className="flex justify-center pt-2">
-                    <div
-                      className="w-3.5 h-3.5 rounded-full ring-4 ring-dark z-10"
-                      style={{ backgroundColor: item.accent }}
-                    />
-                  </div>
-
-                  {/* Right column */}
-                  <div className={isLeft ? "invisible" : ""}>
-                    {!isLeft && (
-                      <div className="pl-4">
-                        <TimelineCard item={item} />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
       </div>
+
+      <Reveal custom={2}>
+        <div className="relative">
+          {/* Edge fade gradients */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-dark to-transparent z-10 pointer-events-none" />
+
+          <div className="overflow-x-auto timeline-scroll pb-4">
+            <div className="relative" style={{ width: TRACK_W, height: TRACK_H }}>
+              {/* SVG trail */}
+              <svg
+                className="absolute inset-0 pointer-events-none"
+                width={TRACK_W}
+                height={TRACK_H}
+                viewBox={`0 0 ${TRACK_W} ${TRACK_H}`}
+                fill="none"
+              >
+                {/* Glow under the trail */}
+                <path
+                  d={PATH_D}
+                  stroke="rgba(204,255,0,0.06)"
+                  strokeWidth={28}
+                  strokeLinecap="round"
+                />
+                {/* Dashed adventure trail */}
+                <path
+                  d={PATH_D}
+                  stroke="rgba(204,255,0,0.2)"
+                  strokeWidth={2}
+                  strokeDasharray="10 8"
+                />
+                {/* Arrow at the end */}
+                {(() => {
+                  const last = POINTS[POINTS.length - 1];
+                  return (
+                    <polygon
+                      points={`${last.x + 14},${last.y} ${last.x + 6},${last.y - 5} ${last.x + 6},${last.y + 5}`}
+                      fill="rgba(204,255,0,0.3)"
+                    />
+                  );
+                })()}
+              </svg>
+
+              {/* Milestone pins and labels */}
+              {MILESTONES.map((m, i) => {
+                const above = i % 2 === 0;
+                const px = POINTS[i].x;
+                const py = POINTS[i].y;
+
+                return (
+                  <div key={i}>
+                    {/* Connector line from pin to label */}
+                    <div
+                      className="absolute w-px opacity-40"
+                      style={{
+                        left: px,
+                        top: above ? py - 68 : py + 2,
+                        height: 40,
+                        background: `linear-gradient(${above ? "to top" : "to bottom"}, ${m.accent}, transparent)`,
+                      }}
+                    />
+
+                    {/* Pin */}
+                    <div
+                      className="absolute z-20"
+                      style={{ left: px - 12, top: py - 28 }}
+                    >
+                      <MapPin color={m.accent} />
+                    </div>
+
+                    {/* Label */}
+                    <div
+                      className="absolute -translate-x-1/2 w-[10rem]"
+                      style={{
+                        left: px,
+                        top: above ? py - 165 : py + 38,
+                      }}
+                    >
+                      <div className="text-center">
+                        <p
+                          className="text-[10px] font-bold tracking-wider uppercase mb-1.5"
+                          style={{ color: m.accent }}
+                        >
+                          {m.period}
+                        </p>
+                        <h4 className="text-[13px] font-bold text-text-light leading-tight mb-0.5">
+                          {m.name}
+                        </h4>
+                        <p className="text-[11px] text-text-muted-light leading-tight mb-1">
+                          {m.role}
+                        </p>
+                        <p className="text-[10px] text-text-muted flex items-center justify-center gap-1">
+                          <svg className="w-2.5 h-2.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                          </svg>
+                          {m.location}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

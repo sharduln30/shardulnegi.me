@@ -138,3 +138,7 @@ html.lenis, html.lenis body { height: auto; }
 ::-webkit-scrollbar-track { background: var(--color-dark); }
 ::-webkit-scrollbar-thumb { background: rgba(204, 255, 0, 0.3); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(204, 255, 0, 0.5); }
+
+/* === TIMELINE SCROLL (hidden scrollbar) === */
+.timeline-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+.timeline-scroll::-webkit-scrollbar { display: none; }
