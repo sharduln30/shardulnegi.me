@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="grain bg-dark text-text-light font-[family-name:var(--font-body)] antialiased">
+      <body suppressHydrationWarning className="grain bg-dark text-text-light font-[family-name:var(--font-body)] antialiased">
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
