@@ -8,7 +8,7 @@ export default function Education() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-3 mb-8">
-            <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">06</span>
+            <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">07</span>
             <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted-light">Education</span>
           </div>
         </Reveal>

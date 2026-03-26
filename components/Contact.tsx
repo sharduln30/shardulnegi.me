@@ -15,7 +15,7 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <Reveal>
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">08</span>
+              <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">09</span>
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted-light">Contact</span>
             </div>
             <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-text-light leading-[1.05]">

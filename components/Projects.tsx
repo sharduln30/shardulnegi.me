@@ -82,7 +82,7 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto w-full px-6 md:px-10 mb-12">
           <Reveal>
             <div className="flex items-center gap-3 mb-8">
-              <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">04</span>
+              <span className="w-8 h-8 rounded-full bg-lime text-dark text-xs font-bold flex items-center justify-center">05</span>
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted-light">Projects</span>
             </div>
           </Reveal>
